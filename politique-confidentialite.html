@@ -1,215 +1,363 @@
-# Guide de Déclaration des Données - Google Play Console
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité - ONFEKOA</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #FF6B35;
+            border-bottom: 3px solid #FF6B35;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .last-updated {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        strong {
+            color: #FF6B35;
+        }
+        a {
+            color: #FF6B35;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #FF6B35;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Politique de Confidentialité</h1>
+        <p class="last-updated"><strong>Dernière mise à jour :</strong> [Date actuelle]</p>
+        <p class="last-updated"><strong>Version de l'application :</strong> 1.0.0</p>
 
-## Résumé des Données Collectées et Partagées
+        <h2>1. Introduction</h2>
+        <p>
+            Bienvenue sur ONFEKOA. Nous nous engageons à protéger votre vie privée et vos données personnelles. 
+            Cette politique de confidentialité explique comment nous collectons, utilisons, partageons et protégeons 
+            vos informations lorsque vous utilisez notre application mobile ONFEKOA.
+        </p>
+        <p>
+            En utilisant notre application, vous acceptez les pratiques décrites dans cette politique de confidentialité. 
+            Si vous n'acceptez pas cette politique, veuillez ne pas utiliser notre application.
+        </p>
 
-### 📋 Types de Données Collectées
+        <h2>2. Responsable du Traitement des Données</h2>
+        <p>
+            <strong>ONFEKOA</strong><br>
+            [Votre adresse]<br>
+            [Votre ville, pays]<br>
+            Email : [votre-email@onfekoa.com]<br>
+            Téléphone : [votre-numéro]
+        </p>
 
-#### 1. **Localisation approximative** ✅ COLLECTÉ
-- **Type** : Données de localisation approximative (GPS)
-- **Collecté** : Oui
-- **Partagé** : Oui (avec Supabase)
-- **Usage** : 
-  - Trouver les activités à proximité
-  - Enregistrer la position GPS des prestataires pour leurs activités
-  - Afficher la position sur les cartes
-- **Justification** : Nécessaire pour la fonctionnalité principale de l'application (plateforme de réservation d'activités avec géolocalisation)
-- **Stockage** : Supabase (base de données)
-- **Durée** : Conservé tant que l'utilisateur a un compte actif
+        <h2>3. Données que Nous Collectons</h2>
+        <p>
+            Nous collectons différents types de données pour fournir et améliorer nos services. Voici les catégories 
+            de données que nous collectons :
+        </p>
 
-#### 2. **Photos et vidéos** ✅ COLLECTÉ
-- **Type** : Photos et vidéos
-- **Collecté** : Oui
-- **Partagé** : Oui (avec Supabase Storage)
-- **Usage** :
-  - Photos de profil utilisateur (avatar)
-  - Photos et vidéos des activités (médias)
-  - Images uploadées par les prestataires
-- **Justification** : Essentiel pour afficher les activités et les profils utilisateurs
-- **Stockage** : Supabase Storage
-- **Permissions** : `expo-image-picker` (galerie photo), potentiellement caméra
+        <h3>3.1. Informations Personnelles</h3>
+        <ul>
+            <li><strong>Nom complet</strong> : Collecté lors de l'inscription</li>
+            <li><strong>Adresse e-mail</strong> : Collectée lors de l'inscription, utilisée pour l'authentification</li>
+            <li><strong>Numéro de téléphone</strong> : Optionnel, collecté si vous choisissez de le fournir</li>
+            <li><strong>Numéro de mobile money</strong> : Collecté si vous utilisez les paiements mobile money</li>
+            <li><strong>Bio/Description</strong> : Optionnel, pour votre profil utilisateur</li>
+        </ul>
 
-#### 3. **Informations personnelles** ✅ COLLECTÉ
-- **Type** : Informations personnelles
-- **Collecté** : Oui
-- **Partagé** : Oui (avec Supabase)
-- **Données incluses** :
-  - Email (authentification)
-  - Nom complet (full_name)
-  - Numéro de téléphone (phone_number)
-  - Numéro de mobile money (mobile_money_number)
-  - Bio (description du profil)
-  - Avatar URL
-- **Usage** : 
-  - Authentification et gestion de compte
-  - Affichage du profil utilisateur
-  - Communication entre utilisateurs et prestataires
-  - Traitement des paiements
-- **Stockage** : Supabase (table `users`)
+        <h3>3.2. Données de Localisation</h3>
+        <ul>
+            <li><strong>Position GPS exacte</strong> : Collectée pour trouver les activités à proximité et enregistrer 
+                la position des prestataires pour leurs activités</li>
+            <li>Ces données sont stockées dans notre base de données pour améliorer votre expérience</li>
+        </ul>
 
-#### 4. **Identifiants** ✅ COLLECTÉ
-- **Type** : Identifiants
-- **Collecté** : Oui
-- **Partagé** : Oui (avec Supabase)
-- **Données incluses** :
-  - ID utilisateur unique
-  - Token de session (authentification)
-  - Token de notification push (Expo Push Token)
-- **Usage** : Authentification, notifications push
-- **Stockage** : Supabase, AsyncStorage (local)
+        <h3>3.3. Photos et Vidéos</h3>
+        <ul>
+            <li><strong>Photos de profil</strong> : Optionnel, collecté si vous choisissez d'uploader une photo</li>
+            <li><strong>Photos et vidéos d'activités</strong> : Collectées par les prestataires pour illustrer leurs activités</li>
+            <li><strong>Photos dans les avis</strong> : Optionnel, collecté si vous choisissez d'inclure des photos dans vos avis</li>
+        </ul>
 
-#### 5. **Informations financières** ✅ COLLECTÉ
-- **Type** : Informations financières
-- **Collecté** : Oui
-- **Partagé** : Oui (avec FeexPay - service de paiement)
-- **Données incluses** :
-  - Montants de transaction
-  - Références de paiement
-  - Numéro de mobile money
-  - Statut de paiement
-- **Usage** : Traitement des paiements pour les réservations
-- **Stockage** : Supabase (table `bookings`), FeexPay
-- **Justification** : Nécessaire pour le traitement des paiements
+        <h3>3.4. Informations Financières</h3>
+        <ul>
+            <li><strong>Informations de paiement</strong> : Numéro de mobile money, méthode de paiement, références de transaction</li>
+            <li><strong>Historique des achats</strong> : Réservations, montants, dates de transaction</li>
+            <li><strong>Autres informations financières</strong> : Montants, devises, frais de service, commissions</li>
+        </ul>
 
-#### 6. **Autres données utilisateur** ✅ COLLECTÉ
-- **Type** : Autres données utilisateur
-- **Collecté** : Oui
-- **Partagé** : Oui (avec Supabase)
-- **Données incluses** :
-  - Activités créées (titre, description, prix, catégorie, localisation)
-  - Réservations (bookings)
-  - Avis et notes (reviews)
-  - Historique de connexion
-  - Préférences utilisateur
-- **Usage** : Fonctionnalités principales de l'application
+        <h3>3.5. Contenu Généré par l'Utilisateur</h3>
+        <ul>
+            <li><strong>Activités créées</strong> : Titre, description, prix, catégorie, localisation, médias</li>
+            <li><strong>Réservations</strong> : Créées par les utilisateurs lors de la réservation d'activités</li>
+            <li><strong>Avis et notes</strong> : Commentaires, notes, photos laissés par les utilisateurs</li>
+            <li><strong>Messages</strong> : Conversations et messages entre utilisateurs et prestataires</li>
+        </ul>
 
-### 🔄 Services Tiers (Partage de Données)
+        <h3>3.6. Données d'Activité</h3>
+        <ul>
+            <li><strong>Interactions avec l'application</strong> : Vues d'activités, likes, favoris, historique de connexion</li>
+            <li><strong>Autres actions</strong> : Réservations, annulations, validations</li>
+        </ul>
 
-#### 1. **Supabase** (Base de données et stockage)
-- **Type de service** : Backend as a Service (BaaS)
-- **Données partagées** : Toutes les données utilisateur collectées
-- **Usage** : Stockage des données, authentification, stockage de fichiers
-- **Politique de confidentialité** : https://supabase.com/privacy
+        <h3>3.7. Identifiants d'Appareil</h3>
+        <ul>
+            <li><strong>Token de notification push</strong> : Pour envoyer des notifications</li>
+            <li><strong>User Agent</strong> : Informations sur l'appareil et le navigateur</li>
+            <li><strong>Informations sur l'appareil</strong> : Nom, type, système d'exploitation</li>
+            <li><strong>Adresse IP</strong> : Pour la sécurité et le suivi des sessions</li>
+        </ul>
 
-#### 2. **FeexPay** (Service de paiement)
-- **Type de service** : Passerelle de paiement
-- **Données partagées** : 
-  - Informations financières (montants, références)
-  - ID de réservation
-  - Informations de transaction
-- **Usage** : Traitement des paiements mobile money
-- **Politique de confidentialité** : À vérifier sur https://feexpay.me
+        <h3>3.8. Données de Performance</h3>
+        <ul>
+            <li><strong>Journaux de plantage</strong> : Collectés automatiquement pour améliorer la stabilité</li>
+            <li><strong>Données de performance</strong> : Statistiques d'utilisation, métriques de performance</li>
+        </ul>
 
-#### 3. **Google Maps** (Cartes)
-- **Type de service** : Service de cartographie
-- **Données partagées** : 
-  - Coordonnées GPS (localisation)
-  - Adresses
-- **Usage** : Affichage des cartes et géolocalisation
-- **Politique de confidentialité** : https://policies.google.com/privacy
+        <h2>4. Comment Nous Utilisons Vos Données</h2>
+        <p>Nous utilisons vos données pour les finalités suivantes :</p>
 
-#### 4. **Expo** (Notifications push)
-- **Type de service** : Service de notifications
-- **Données partagées** : 
-  - Token de notification push
-- **Usage** : Envoi de notifications push aux utilisateurs
-- **Politique de confidentialité** : https://expo.dev/privacy
+        <h3>4.1. Fonctionnement de l'Application</h3>
+        <ul>
+            <li>Authentifier et gérer votre compte utilisateur</li>
+            <li>Permettre la réservation d'activités</li>
+            <li>Faciliter la communication entre utilisateurs et prestataires</li>
+            <li>Traiter les paiements et gérer les transactions</li>
+            <li>Afficher les activités et les profils utilisateurs</li>
+        </ul>
 
-### 📱 Permissions Android Demandées
+        <h3>4.2. Gestion des Comptes</h3>
+        <ul>
+            <li>Créer et gérer votre compte utilisateur</li>
+            <li>Personnaliser votre profil</li>
+            <li>Gérer vos réservations et votre historique</li>
+        </ul>
 
-1. **ACCESS_FINE_LOCATION** / **ACCESS_COARSE_LOCATION**
-   - Usage : Géolocalisation pour trouver les activités à proximité
-   - Justification : Fonctionnalité principale de l'application
+        <h3>4.3. Communications</h3>
+        <ul>
+            <li>Envoyer des notifications push importantes</li>
+            <li>Envoyer des emails de confirmation et de notification</li>
+            <li>Vous informer des mises à jour de sécurité</li>
+        </ul>
 
-2. **READ_EXTERNAL_STORAGE** / **WRITE_EXTERNAL_STORAGE**
-   - Usage : Accès à la galerie photo pour uploader des images
-   - Justification : Permettre aux utilisateurs d'ajouter des photos de profil et des médias d'activités
+        <h3>4.4. Sécurité et Prévention des Fraudes</h3>
+        <ul>
+            <li>Vérifier l'identité des utilisateurs</li>
+            <li>Détecter et prévenir les fraudes</li>
+            <li>Assurer la sécurité des transactions</li>
+            <li>Respecter les obligations légales</li>
+        </ul>
 
-3. **CAMERA** (si utilisé)
-   - Usage : Prendre des photos directement depuis l'application
-   - Justification : Permettre aux utilisateurs de prendre des photos pour leurs profils/activités
+        <h3>4.5. Personnalisation</h3>
+        <ul>
+            <li>Recommander des activités basées sur vos préférences</li>
+            <li>Personnaliser votre expérience utilisateur</li>
+            <li>Améliorer nos services</li>
+        </ul>
 
-4. **POST_NOTIFICATIONS**
-   - Usage : Envoyer des notifications push
-   - Justification : Informer les utilisateurs des mises à jour de réservations
+        <h3>4.6. Analyse et Amélioration</h3>
+        <ul>
+            <li>Analyser l'utilisation de l'application</li>
+            <li>Identifier et corriger les bugs</li>
+            <li>Améliorer les performances et la stabilité</li>
+        </ul>
 
-### ✅ Réponses Recommandées pour le Questionnaire
+        <h2>5. Partage de Données avec des Tiers</h2>
+        <p>
+            Nous partageons vos données avec les services tiers suivants pour fournir nos services :
+        </p>
 
-#### Question : "Votre application collecte-t-elle des données ?"
-**Réponse : OUI**
+        <h3>5.1. Supabase</h3>
+        <ul>
+            <li><strong>Type de service</strong> : Backend as a Service (BaaS)</li>
+            <li><strong>Données partagées</strong> : Toutes les données utilisateur collectées</li>
+            <li><strong>Usage</strong> : Stockage des données, authentification, stockage de fichiers</li>
+            <li><strong>Politique de confidentialité</strong> : <a href="https://supabase.com/privacy" target="_blank">https://supabase.com/privacy</a></li>
+        </ul>
 
-#### Pour chaque type de données :
+        <h3>5.2. FeexPay</h3>
+        <ul>
+            <li><strong>Type de service</strong> : Passerelle de paiement</li>
+            <li><strong>Données partagées</strong> : Informations financières, montants, références de transaction</li>
+            <li><strong>Usage</strong> : Traitement des paiements mobile money</li>
+            <li><strong>Politique de confidentialité</strong> : <a href="https://feexpay.me" target="_blank">https://feexpay.me</a></li>
+        </ul>
 
-1. **Localisation approximative**
-   - Collecté : ✅ OUI
-   - Partagé : ✅ OUI (Supabase, Google Maps)
-   - Usage : Fonctionnalité de l'application, publicité, analytics, développement de produits
+        <h3>5.3. Google Maps</h3>
+        <ul>
+            <li><strong>Type de service</strong> : Service de cartographie</li>
+            <li><strong>Données partagées</strong> : Coordonnées GPS, adresses</li>
+            <li><strong>Usage</strong> : Affichage des cartes et géolocalisation</li>
+            <li><strong>Politique de confidentialité</strong> : <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></li>
+        </ul>
 
-2. **Photos et vidéos**
-   - Collecté : ✅ OUI
-   - Partagé : ✅ OUI (Supabase Storage)
-   - Usage : Fonctionnalité de l'application
+        <h3>5.4. Expo</h3>
+        <ul>
+            <li><strong>Type de service</strong> : Service de notifications</li>
+            <li><strong>Données partagées</strong> : Token de notification push</li>
+            <li><strong>Usage</strong> : Envoi de notifications push aux utilisateurs</li>
+            <li><strong>Politique de confidentialité</strong> : <a href="https://expo.dev/privacy" target="_blank">https://expo.dev/privacy</a></li>
+        </ul>
 
-3. **Informations personnelles**
-   - Collecté : ✅ OUI
-   - Partagé : ✅ OUI (Supabase, FeexPay)
-   - Usage : Fonctionnalité de l'application, traitement des paiements
+        <h2>6. Sécurité des Données</h2>
+        <p>
+            Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données personnelles :
+        </p>
+        <ul>
+            <li><strong>Chiffrement</strong> : Toutes les communications sont chiffrées via HTTPS/TLS</li>
+            <li><strong>Authentification sécurisée</strong> : Système d'authentification sécurisé via Supabase Auth</li>
+            <li><strong>Stockage sécurisé</strong> : Données stockées de manière sécurisée sur Supabase</li>
+            <li><strong>Paiements sécurisés</strong> : Traitement sécurisé via FeexPay conforme aux standards de sécurité</li>
+            <li><strong>Accès restreint</strong> : Accès aux données limité aux personnes autorisées uniquement</li>
+        </ul>
 
-4. **Identifiants**
-   - Collecté : ✅ OUI
-   - Partagé : ✅ OUI (Supabase, Expo)
-   - Usage : Authentification, notifications
+        <h2>7. Conservation des Données</h2>
+        <p>
+            Nous conservons vos données personnelles aussi longtemps que nécessaire pour :
+        </p>
+        <ul>
+            <li>Fournir nos services</li>
+            <li>Respecter nos obligations légales</li>
+            <li>Résoudre les litiges</li>
+            <li>Faire respecter nos accords</li>
+        </ul>
+        <p>
+            Vous pouvez demander la suppression de vos données à tout moment en nous contactant. Nous supprimerons 
+            vos données dans les délais légaux applicables, sauf si nous sommes tenus de les conserver pour des raisons légales.
+        </p>
 
-5. **Informations financières**
-   - Collecté : ✅ OUI
-   - Partagé : ✅ OUI (FeexPay)
-   - Usage : Traitement des paiements
+        <h2>8. Vos Droits</h2>
+        <p>Conformément aux lois sur la protection des données, vous avez les droits suivants :</p>
+        <ul>
+            <li><strong>Droit d'accès</strong> : Vous pouvez demander une copie de vos données personnelles</li>
+            <li><strong>Droit de rectification</strong> : Vous pouvez corriger vos données inexactes</li>
+            <li><strong>Droit à l'effacement</strong> : Vous pouvez demander la suppression de vos données</li>
+            <li><strong>Droit à la portabilité</strong> : Vous pouvez demander le transfert de vos données</li>
+            <li><strong>Droit d'opposition</strong> : Vous pouvez vous opposer au traitement de vos données</li>
+            <li><strong>Droit de limitation</strong> : Vous pouvez demander la limitation du traitement</li>
+        </ul>
+        <p>
+            Pour exercer ces droits, veuillez nous contacter à l'adresse indiquée dans la section "Contact".
+        </p>
 
-6. **Autres données utilisateur**
-   - Collecté : ✅ OUI
-   - Partagé : ✅ OUI (Supabase)
-   - Usage : Fonctionnalité de l'application
+        <h2>9. Données des Enfants</h2>
+        <p>
+            Notre application n'est pas destinée aux enfants de moins de 13 ans. Nous ne collectons pas sciemment 
+            de données personnelles d'enfants de moins de 13 ans. Si nous apprenons qu'un enfant de moins de 13 ans 
+            nous a fourni des données personnelles, nous supprimerons ces informations dans les plus brefs délais.
+        </p>
 
-### 🔒 Sécurité et Confidentialité
+        <h2>10. Modifications de cette Politique</h2>
+        <p>
+            Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons 
+            de tout changement en publiant la nouvelle politique de confidentialité sur cette page et en mettant à jour 
+            la date de "Dernière mise à jour".
+        </p>
+        <p>
+            Nous vous encourageons à consulter régulièrement cette politique de confidentialité pour rester informé 
+            de la manière dont nous protégeons vos données.
+        </p>
 
-- **Chiffrement** : Toutes les communications sont chiffrées (HTTPS)
-- **Authentification** : Système d'authentification sécurisé via Supabase Auth
-- **Stockage** : Données stockées de manière sécurisée sur Supabase
-- **Paiements** : Traitement sécurisé via FeexPay (conforme aux standards de sécurité)
+        <h2>11. Consentement</h2>
+        <p>
+            En utilisant notre application, vous consentez à notre politique de confidentialité et acceptez ses termes. 
+            Si vous n'acceptez pas cette politique, veuillez ne pas utiliser notre application.
+        </p>
 
-### 📝 Politique de Confidentialité
+        <h2>12. Contact</h2>
+        <div class="contact-info">
+            <p>
+                Si vous avez des questions concernant cette politique de confidentialité ou souhaitez exercer vos droits, 
+                veuillez nous contacter :
+            </p>
+            <p>
+                <strong>ONFEKOA</strong><br>
+                Email : [votre-email@onfekoa.com]<br>
+                Téléphone : [votre-numéro]<br>
+                Adresse : [votre-adresse complète]
+            </p>
+            <p>
+                Nous nous engageons à répondre à vos demandes dans les meilleurs délais et conformément aux lois applicables.
+            </p>
+        </div>
 
-**IMPORTANT** : Vous devez avoir une politique de confidentialité accessible publiquement qui explique :
-- Quelles données sont collectées
-- Comment elles sont utilisées
-- Avec qui elles sont partagées
-- Comment les utilisateurs peuvent supprimer leurs données
-- Comment contacter l'équipe pour des questions sur la confidentialité
+        <h2>13. Juridiction et Loi Applicable</h2>
+        <p>
+            Cette politique de confidentialité est régie par les lois du [Votre pays/juridiction]. 
+            Tout litige relatif à cette politique sera soumis à la juridiction exclusive des tribunaux de [Votre juridiction].
+        </p>
 
-**URL de la politique de confidentialité** : [À fournir - doit être accessible publiquement]
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
 
-### ⚠️ Notes Importantes
-
-1. **Données éphémères** : Certaines données peuvent être traitées de manière éphémère (en mémoire uniquement) mais doivent quand même être déclarées.
-
-2. **SDK tiers** : Tous les SDK utilisés (Supabase, Expo, etc.) peuvent collecter des données. Vérifiez leurs politiques de confidentialité.
-
-3. **WebView** : Si votre application utilise des WebViews, les données collectées via ces WebViews doivent être déclarées.
-
-4. **Mise à jour** : Si vous ajoutez de nouvelles fonctionnalités qui collectent de nouvelles données, vous devrez mettre à jour cette déclaration.
-
-### 📋 Checklist Avant Soumission
-
-- [ ] Toutes les données collectées sont déclarées
-- [ ] Toutes les données partagées sont déclarées
-- [ ] Politique de confidentialité accessible publiquement
-- [ ] Justification claire pour chaque type de données
-- [ ] Informations sur les services tiers fournies
-- [ ] Permissions Android justifiées
-- [ ] Révision des SDK tiers et leurs politiques de confidentialité
-
----
-
-**Date de création** : [Date actuelle]
-**Dernière mise à jour** : [Date actuelle]
-**Version de l'application** : 1.0.0
+        <p style="text-align: center; color: #666; font-size: 0.9em;">
+            © [Année actuelle] ONFEKOA. Tous droits réservés.
+        </p>
+    </div>
+</body>
+</html>
 
