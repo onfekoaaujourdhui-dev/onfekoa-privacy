@@ -1,0 +1,215 @@
+# Guide de Déclaration des Données - Google Play Console
+
+## Résumé des Données Collectées et Partagées
+
+### 📋 Types de Données Collectées
+
+#### 1. **Localisation approximative** ✅ COLLECTÉ
+- **Type** : Données de localisation approximative (GPS)
+- **Collecté** : Oui
+- **Partagé** : Oui (avec Supabase)
+- **Usage** : 
+  - Trouver les activités à proximité
+  - Enregistrer la position GPS des prestataires pour leurs activités
+  - Afficher la position sur les cartes
+- **Justification** : Nécessaire pour la fonctionnalité principale de l'application (plateforme de réservation d'activités avec géolocalisation)
+- **Stockage** : Supabase (base de données)
+- **Durée** : Conservé tant que l'utilisateur a un compte actif
+
+#### 2. **Photos et vidéos** ✅ COLLECTÉ
+- **Type** : Photos et vidéos
+- **Collecté** : Oui
+- **Partagé** : Oui (avec Supabase Storage)
+- **Usage** :
+  - Photos de profil utilisateur (avatar)
+  - Photos et vidéos des activités (médias)
+  - Images uploadées par les prestataires
+- **Justification** : Essentiel pour afficher les activités et les profils utilisateurs
+- **Stockage** : Supabase Storage
+- **Permissions** : `expo-image-picker` (galerie photo), potentiellement caméra
+
+#### 3. **Informations personnelles** ✅ COLLECTÉ
+- **Type** : Informations personnelles
+- **Collecté** : Oui
+- **Partagé** : Oui (avec Supabase)
+- **Données incluses** :
+  - Email (authentification)
+  - Nom complet (full_name)
+  - Numéro de téléphone (phone_number)
+  - Numéro de mobile money (mobile_money_number)
+  - Bio (description du profil)
+  - Avatar URL
+- **Usage** : 
+  - Authentification et gestion de compte
+  - Affichage du profil utilisateur
+  - Communication entre utilisateurs et prestataires
+  - Traitement des paiements
+- **Stockage** : Supabase (table `users`)
+
+#### 4. **Identifiants** ✅ COLLECTÉ
+- **Type** : Identifiants
+- **Collecté** : Oui
+- **Partagé** : Oui (avec Supabase)
+- **Données incluses** :
+  - ID utilisateur unique
+  - Token de session (authentification)
+  - Token de notification push (Expo Push Token)
+- **Usage** : Authentification, notifications push
+- **Stockage** : Supabase, AsyncStorage (local)
+
+#### 5. **Informations financières** ✅ COLLECTÉ
+- **Type** : Informations financières
+- **Collecté** : Oui
+- **Partagé** : Oui (avec FeexPay - service de paiement)
+- **Données incluses** :
+  - Montants de transaction
+  - Références de paiement
+  - Numéro de mobile money
+  - Statut de paiement
+- **Usage** : Traitement des paiements pour les réservations
+- **Stockage** : Supabase (table `bookings`), FeexPay
+- **Justification** : Nécessaire pour le traitement des paiements
+
+#### 6. **Autres données utilisateur** ✅ COLLECTÉ
+- **Type** : Autres données utilisateur
+- **Collecté** : Oui
+- **Partagé** : Oui (avec Supabase)
+- **Données incluses** :
+  - Activités créées (titre, description, prix, catégorie, localisation)
+  - Réservations (bookings)
+  - Avis et notes (reviews)
+  - Historique de connexion
+  - Préférences utilisateur
+- **Usage** : Fonctionnalités principales de l'application
+
+### 🔄 Services Tiers (Partage de Données)
+
+#### 1. **Supabase** (Base de données et stockage)
+- **Type de service** : Backend as a Service (BaaS)
+- **Données partagées** : Toutes les données utilisateur collectées
+- **Usage** : Stockage des données, authentification, stockage de fichiers
+- **Politique de confidentialité** : https://supabase.com/privacy
+
+#### 2. **FeexPay** (Service de paiement)
+- **Type de service** : Passerelle de paiement
+- **Données partagées** : 
+  - Informations financières (montants, références)
+  - ID de réservation
+  - Informations de transaction
+- **Usage** : Traitement des paiements mobile money
+- **Politique de confidentialité** : À vérifier sur https://feexpay.me
+
+#### 3. **Google Maps** (Cartes)
+- **Type de service** : Service de cartographie
+- **Données partagées** : 
+  - Coordonnées GPS (localisation)
+  - Adresses
+- **Usage** : Affichage des cartes et géolocalisation
+- **Politique de confidentialité** : https://policies.google.com/privacy
+
+#### 4. **Expo** (Notifications push)
+- **Type de service** : Service de notifications
+- **Données partagées** : 
+  - Token de notification push
+- **Usage** : Envoi de notifications push aux utilisateurs
+- **Politique de confidentialité** : https://expo.dev/privacy
+
+### 📱 Permissions Android Demandées
+
+1. **ACCESS_FINE_LOCATION** / **ACCESS_COARSE_LOCATION**
+   - Usage : Géolocalisation pour trouver les activités à proximité
+   - Justification : Fonctionnalité principale de l'application
+
+2. **READ_EXTERNAL_STORAGE** / **WRITE_EXTERNAL_STORAGE**
+   - Usage : Accès à la galerie photo pour uploader des images
+   - Justification : Permettre aux utilisateurs d'ajouter des photos de profil et des médias d'activités
+
+3. **CAMERA** (si utilisé)
+   - Usage : Prendre des photos directement depuis l'application
+   - Justification : Permettre aux utilisateurs de prendre des photos pour leurs profils/activités
+
+4. **POST_NOTIFICATIONS**
+   - Usage : Envoyer des notifications push
+   - Justification : Informer les utilisateurs des mises à jour de réservations
+
+### ✅ Réponses Recommandées pour le Questionnaire
+
+#### Question : "Votre application collecte-t-elle des données ?"
+**Réponse : OUI**
+
+#### Pour chaque type de données :
+
+1. **Localisation approximative**
+   - Collecté : ✅ OUI
+   - Partagé : ✅ OUI (Supabase, Google Maps)
+   - Usage : Fonctionnalité de l'application, publicité, analytics, développement de produits
+
+2. **Photos et vidéos**
+   - Collecté : ✅ OUI
+   - Partagé : ✅ OUI (Supabase Storage)
+   - Usage : Fonctionnalité de l'application
+
+3. **Informations personnelles**
+   - Collecté : ✅ OUI
+   - Partagé : ✅ OUI (Supabase, FeexPay)
+   - Usage : Fonctionnalité de l'application, traitement des paiements
+
+4. **Identifiants**
+   - Collecté : ✅ OUI
+   - Partagé : ✅ OUI (Supabase, Expo)
+   - Usage : Authentification, notifications
+
+5. **Informations financières**
+   - Collecté : ✅ OUI
+   - Partagé : ✅ OUI (FeexPay)
+   - Usage : Traitement des paiements
+
+6. **Autres données utilisateur**
+   - Collecté : ✅ OUI
+   - Partagé : ✅ OUI (Supabase)
+   - Usage : Fonctionnalité de l'application
+
+### 🔒 Sécurité et Confidentialité
+
+- **Chiffrement** : Toutes les communications sont chiffrées (HTTPS)
+- **Authentification** : Système d'authentification sécurisé via Supabase Auth
+- **Stockage** : Données stockées de manière sécurisée sur Supabase
+- **Paiements** : Traitement sécurisé via FeexPay (conforme aux standards de sécurité)
+
+### 📝 Politique de Confidentialité
+
+**IMPORTANT** : Vous devez avoir une politique de confidentialité accessible publiquement qui explique :
+- Quelles données sont collectées
+- Comment elles sont utilisées
+- Avec qui elles sont partagées
+- Comment les utilisateurs peuvent supprimer leurs données
+- Comment contacter l'équipe pour des questions sur la confidentialité
+
+**URL de la politique de confidentialité** : [À fournir - doit être accessible publiquement]
+
+### ⚠️ Notes Importantes
+
+1. **Données éphémères** : Certaines données peuvent être traitées de manière éphémère (en mémoire uniquement) mais doivent quand même être déclarées.
+
+2. **SDK tiers** : Tous les SDK utilisés (Supabase, Expo, etc.) peuvent collecter des données. Vérifiez leurs politiques de confidentialité.
+
+3. **WebView** : Si votre application utilise des WebViews, les données collectées via ces WebViews doivent être déclarées.
+
+4. **Mise à jour** : Si vous ajoutez de nouvelles fonctionnalités qui collectent de nouvelles données, vous devrez mettre à jour cette déclaration.
+
+### 📋 Checklist Avant Soumission
+
+- [ ] Toutes les données collectées sont déclarées
+- [ ] Toutes les données partagées sont déclarées
+- [ ] Politique de confidentialité accessible publiquement
+- [ ] Justification claire pour chaque type de données
+- [ ] Informations sur les services tiers fournies
+- [ ] Permissions Android justifiées
+- [ ] Révision des SDK tiers et leurs politiques de confidentialité
+
+---
+
+**Date de création** : [Date actuelle]
+**Dernière mise à jour** : [Date actuelle]
+**Version de l'application** : 1.0.0
+
